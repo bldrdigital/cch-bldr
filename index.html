@@ -38,11 +38,6 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; a
 /* HERO */
 .hero { min-height: 88vh; padding: 0 80px; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; padding-top: 86px; }
 /* video background */
-.hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
-/* dark overlay — forest green tint over video */
-.hero-overlay { position: absolute; inset: 0; background: linear-gradient(105deg, rgba(30,42,28,0.82) 0%, rgba(40,58,36,0.70) 55%, rgba(30,42,28,0.60) 100%); z-index: 1; pointer-events: none; }
-/* bottom fade so trust bar reads cleanly */
-.hero-overlay::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 180px; background: linear-gradient(to top, rgba(30,42,28,0.7) 0%, transparent 100%); }
 .hero-grain { position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E"); pointer-events: none; z-index: 2; }
 .hero-inner { position: relative; z-index: 3; max-width: 860px; }
 .hero-eyebrow { display: flex; align-items: center; gap: 14px; font-size: 11px; font-weight: 500; letter-spacing: 0.24em; text-transform: uppercase; color: var(--sage-lt); margin-bottom: 28px; }
@@ -178,6 +173,102 @@ footer { background: #1A1C18; padding: 64px 80px 32px; }
 .hero-desc    { animation: fadeUp 0.6s ease both 0.4s; }
 .hero-actions { animation: fadeUp 0.6s ease both 0.5s; }
 .hero-trust   { animation: fadeUp 0.6s ease both 0.6s; }
+
+/* ── TABLET (max 1024px) ── */
+@media (max-width: 1024px) {
+  nav { padding: 18px 32px; }
+  .nav-links { gap: 24px; }
+  .hero { padding: 0 40px; padding-top: 86px; }
+  .triad { padding: 80px 40px; }
+  .triad-header { grid-template-columns: 1fr; gap: 20px; }
+  .about { padding: 80px 40px; gap: 60px; }
+  .services { padding: 80px 40px; }
+  .reviews { padding: 80px 40px; }
+  .cta-strip { padding: 80px 40px; gap: 40px; }
+  footer { padding: 48px 40px 24px; }
+}
+
+/* ── MOBILE (max 768px) ── */
+@media (max-width: 768px) {
+
+  /* NAV */
+  nav { padding: 16px 24px; }
+  .nav-links { display: none; }
+  .nav-logo-name { font-size: 15px; }
+  /* Show only the book CTA on mobile */
+  .nav-links-mobile-cta {
+    display: inline-flex; align-items: center;
+    background: var(--forest); color: var(--white);
+    padding: 10px 18px; border-radius: 3px;
+    font-size: 11px; font-weight: 500; letter-spacing: 0.14em;
+    text-transform: uppercase; text-decoration: none;
+  }
+
+  /* HERO */
+  .hero { min-height: 100svh; padding: 24px 24px 48px; padding-top: 80px; justify-content: flex-end; }
+  .hero-inner { max-width: 100%; }
+  .hero-eyebrow { font-size: 10px; margin-bottom: 20px; }
+  .hero-h1 { font-size: clamp(36px, 10vw, 52px); margin-bottom: 10px; line-height: 1.1; }
+  .hero-sub { font-size: 10px; margin-bottom: 24px; }
+  .hero-rule { margin-bottom: 20px; }
+  .hero-desc { font-size: 15px; margin-bottom: 32px; max-width: 100%; }
+  .hero-actions { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .btn-primary { width: 100%; justify-content: center; padding: 16px 24px; }
+  .btn-ghost { font-size: 11px; }
+  .hero-trust { margin-top: 40px; padding-top: 28px; gap: 20px; flex-wrap: wrap; }
+  .trust-number { font-size: 26px; }
+  .trust-sep { display: none; }
+
+  /* TRIAD */
+  .triad { padding: 64px 24px; }
+  .triad-header { grid-template-columns: 1fr; gap: 16px; margin-bottom: 40px; }
+  .triad-intro { font-size: 14px; }
+  .triad-cards { grid-template-columns: 1fr; gap: 16px; }
+  .triad-card { padding: 36px 28px; }
+  .triad-card-num { font-size: 48px; }
+
+  /* ABOUT */
+  .about { grid-template-columns: 1fr; padding: 64px 24px; gap: 40px; }
+  .about-img-wrap { display: none; }
+  .about-h2 { font-size: clamp(28px, 8vw, 38px); margin-bottom: 20px; }
+  .about-body { font-size: 14px; }
+
+  /* SERVICES */
+  .services { padding: 64px 24px; }
+  .services-grid { grid-template-columns: 1fr; gap: 2px; }
+  .service-card { padding: 32px 24px; }
+  .services-h2 { font-size: clamp(28px, 8vw, 38px); }
+
+  /* REVIEWS */
+  .reviews { padding: 64px 24px; }
+  .reviews::before { font-size: 200px; top: -20px; left: 12px; }
+  .reviews-header { flex-direction: column; align-items: flex-start; gap: 24px; margin-bottom: 36px; }
+  .reviews-score { text-align: left; }
+  .reviews-big { font-size: 44px; }
+  .reviews-grid { grid-template-columns: 1fr; gap: 16px; }
+  .review-card { padding: 28px 24px; }
+  .review-text { font-size: 15px; }
+  .reviews-h2 { font-size: clamp(26px, 8vw, 36px); }
+
+  /* CTA STRIP */
+  .cta-strip { grid-template-columns: 1fr; padding: 64px 24px; gap: 36px; }
+  .cta-h2 { font-size: clamp(28px, 8vw, 38px); }
+  .cta-body { font-size: 14px; }
+  .cta-right { width: 100%; }
+  .btn-primary-lg { width: 100%; justify-content: center; padding: 18px 24px; }
+
+  /* FOOTER */
+  footer { padding: 48px 24px 24px; }
+  .footer-top { grid-template-columns: 1fr; gap: 40px; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; gap: 8px; }
+}
+
+/* ── SMALL MOBILE (max 390px) ── */
+@media (max-width: 390px) {
+  .hero-h1 { font-size: 34px; }
+  .hero-desc { font-size: 14px; }
+  .trust-item { min-width: 60px; }
+}
 </style>
 </head>
 <body>
@@ -194,14 +285,18 @@ footer { background: #1A1C18; padding: 64px 80px 32px; }
     <li><a href="#">Location</a></li>
     <li><a href="#" class="nav-cta">Book Appointment</a></li>
   </ul>
+  <a href="#" class="nav-links-mobile-cta" style="display:none;" id="mobile-book-btn">Book</a>
+  <script>
+    if(window.innerWidth <= 768) document.getElementById('mobile-book-btn').style.display='inline-flex';
+    window.addEventListener('resize', function(){ document.getElementById('mobile-book-btn').style.display = window.innerWidth<=768?'inline-flex':'none'; });
+  </script>
 </nav>
 
 <section class="hero">
-  <video class="hero-video" autoplay muted loop playsinline>
+  <video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.45;z-index:0;">
     <source src="hero.mp4" type="video/mp4">
   </video>
-  <div class="hero-overlay"></div>
-  <div class="hero-grain"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(105deg,rgba(30,42,28,0.88) 0%,rgba(40,58,36,0.72) 55%,rgba(30,42,28,0.60) 100%);z-index:1;pointer-events:none;"></div>
   <div class="hero-inner">
     <div class="hero-eyebrow">Sherman Oaks, California</div>
     <h1 class="hero-h1">Whole-Body Care<br>for <em>Mind, Body</em> &amp; Spirit</h1>

@@ -37,33 +37,8 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; a
 .nav-cta { background: var(--terra) !important; color: var(--white) !important; padding: 11px 24px !important; border-radius: 3px; }
 .nav-cta:hover { background: var(--terra-lt) !important; }
 
-/* HERO */
-.hero { min-height: 88vh; padding: 0 80px; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; padding-top: 86px; }
-/* video background */
-.hero-grain { position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E"); pointer-events: none; z-index: 2; }
-.hero-inner { position: relative; z-index: 3; max-width: 960px; }
-.hero-eyebrow { display: flex; align-items: center; gap: 14px; font-size: 11px; font-weight: 500; letter-spacing: 0.24em; text-transform: uppercase; color: #C4956A; margin-bottom: 28px; }
-.hero-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--terra); }
-.hero-h1 { font-family: 'Lora', serif; font-size: clamp(48px, 7.5vw, 108px); font-weight: 400; line-height: 1.0; color: var(--white); margin-bottom: 16px; }
-.hero-h1 em { font-style: italic; color: var(--terra-lt); }
-.hero-sub { font-size: 12px; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 32px; }
-.hero-rule { width: 40px; height: 2px; background: #A0522D; margin-bottom: 28px; }
-.hero-desc { font-size: 15px; font-weight: 300; line-height: 1.8; color: rgba(255,255,255,0.62); max-width: 500px; margin-bottom: 44px; }
-.hero-actions { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
-.btn-primary { display: inline-flex; align-items: center; gap: 10px; background: var(--terra); color: var(--white); padding: 17px 32px; border-radius: 3px; font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none; transition: background 0.25s, transform 0.2s; }
-.btn-primary:hover { background: var(--terra-lt); transform: translateY(-1px); }
-.btn-primary svg { transition: transform 0.2s; }
-.btn-primary:hover svg { transform: translateX(3px); }
-.btn-ghost { font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.45); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.15); padding-bottom: 2px; transition: color 0.2s, border-color 0.2s; }
-.btn-ghost:hover { color: #C4956A; border-color: var(--terra); }
-.hero-trust { margin-top: 72px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.12); display: flex; align-items: center; gap: 48px; }
-.trust-item { display: flex; flex-direction: column; gap: 5px; }
-.trust-number { font-family: 'Lora', serif; font-size: 36px; font-weight: 400; color: var(--white); line-height: 1; }
-.trust-number span { color: #C4956A; font-style: italic; }
-.trust-label { font-size: 10px; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.45); }
-.trust-sep { width: 1px; height: 36px; background: rgba(138,158,130,0.2); }
-
-/* review badge — now inline in trust bar */
+/* HERO — handled via inline styles on section, matching Epitome pattern */
+/* review badge  — now inline in trust bar */
 .review-badge-inline { display: flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.06); border: 1px solid rgba(138,158,130,0.2); padding: 14px 20px; border-radius: 3px; }
 .badge-stars { color: #C4956A; font-size: 13px; letter-spacing: 2px; }
 .badge-score { font-family: 'Lora', serif; font-size: 20px; font-weight: 400; color: var(--white); line-height: 1; }
@@ -167,14 +142,7 @@ footer { background: #1A1C18; padding: 64px 80px 32px; }
 .footer-bldr a { color: var(--terra); text-decoration: none; }
 .footer-bldr a:hover { color: var(--terra-lt); }
 
-@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-.hero-eyebrow { animation: fadeUp 0.6s ease both 0.1s; }
-.hero-h1      { animation: fadeUp 0.6s ease both 0.2s; }
-.hero-sub     { animation: fadeUp 0.6s ease both 0.3s; }
-.hero-rule    { animation: fadeUp 0.6s ease both 0.35s; }
-.hero-desc    { animation: fadeUp 0.6s ease both 0.4s; }
-.hero-actions { animation: fadeUp 0.6s ease both 0.5s; }
-.hero-trust   { animation: fadeUp 0.6s ease both 0.6s; }
+
 
 /* ── TABLET (max 1024px) ── */
 @media (max-width: 1024px) {
@@ -294,42 +262,53 @@ footer { background: #1A1C18; padding: 64px 80px 32px; }
   </script>
 </nav>
 
-<section class="hero">
-  <video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.55;z-index:0;">
+<section style="position:relative;width:100%;height:100vh;min-height:560px;overflow:hidden;background:#2a3a28;">
+  <video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.55;">
     <source src="campbell.mp4" type="video/mp4">
   </video>
-  <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(22,32,20,0.78) 0%,rgba(22,32,20,0.45) 55%,rgba(22,32,20,0.15) 100%);z-index:1;pointer-events:none;"></div>
-  <div class="hero-inner">
-    <div class="hero-eyebrow">Sherman Oaks, California</div>
-    <h1 class="hero-h1">Whole-Body Care<br>for <em>Mind, Body</em> &amp; <em>Spirit</em></h1>
-    <p class="hero-sub">Dr. Timothy R. Campbell, D.C. &nbsp;·&nbsp; 42 Years in Practice</p>
-    <div class="hero-rule"></div>
-    <p class="hero-desc">Chiropractic care that treats the whole person — structural, nutritional, and emotional — so you can live without limitation. Trusted by Sherman Oaks families for over four decades.</p>
-    <div class="hero-actions">
-      <a href="#" class="btn-primary">
-        Book an Appointment
-        <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-      <a href="#" class="btn-ghost">Our Approach</a>
-    </div>
-    <div class="hero-trust">
-      <div class="trust-item">
-        <div class="trust-number">5.0<span>★</span></div>
-        <div class="trust-label">Google Rating</div>
+  <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(26,38,24,0.75) 0%,rgba(26,38,24,0.38) 58%,rgba(26,38,24,0.12) 100%);"></div>
+  <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:0 72px;">
+    <div style="max-width:600px;">
+      <div style="display:flex;align-items:center;gap:12px;font-size:10px;letter-spacing:0.22em;color:#C4956A;text-transform:uppercase;margin-bottom:20px;font-weight:500;font-family:'DM Sans',sans-serif;">
+        <span style="display:inline-block;width:28px;height:1px;background:#A0522D;"></span>
+        Sherman Oaks, California
       </div>
-      <div class="trust-sep"></div>
-      <div class="trust-item">
-        <div class="trust-number">112</div>
-        <div class="trust-label">Patient Reviews</div>
-      </div>
-      <div class="trust-sep"></div>
-      <div class="trust-item">
-        <div class="trust-number">42</div>
-        <div class="trust-label">Years in Practice</div>
+      <h1 style="font-family:'Lora',serif;font-size:68px;line-height:1.05;font-weight:400;color:#ffffff;margin-bottom:16px;">Whole-Body Care<br>for <em style="font-style:italic;color:#C4956A;">Mind, Body</em> &amp; <em style="font-style:italic;color:#C4956A;">Spirit</em></h1>
+      <p style="font-size:11px;font-weight:400;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.50);margin-bottom:24px;font-family:'DM Sans',sans-serif;">Dr. Timothy R. Campbell, D.C. &nbsp;·&nbsp; 42 Years in Practice</p>
+      <div style="width:36px;height:2px;background:#A0522D;margin-bottom:24px;"></div>
+      <p style="font-size:15px;color:rgba(255,255,255,0.65);margin-bottom:40px;line-height:1.8;font-weight:300;font-family:'DM Sans',sans-serif;max-width:460px;">Chiropractic care that treats the whole person — structural, nutritional, and emotional — so you can live without limitation. Trusted by Sherman Oaks families for over four decades.</p>
+      <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
+        <a href="#" style="display:inline-flex;align-items:center;gap:10px;background:#A0522D;color:#fff;padding:15px 30px;border-radius:3px;font-size:10px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;text-decoration:none;font-family:'DM Sans',sans-serif;">
+          Book an Appointment
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#" style="font-size:10px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.45);text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.2);padding-bottom:2px;font-family:'DM Sans',sans-serif;">Our Approach</a>
       </div>
     </div>
   </div>
+  <div style="position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0.4;">
+    <div style="font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:#ffffff;font-family:'DM Sans',sans-serif;">Scroll</div>
+    <div style="width:1px;height:36px;background:#C4956A;"></div>
+  </div>
 </section>
+
+<!-- TRUST BAR -->
+<div style="background:#2a3a28;border-top:1px solid rgba(255,255,255,0.06);display:flex;justify-content:center;">
+  <div style="display:flex;width:100%;max-width:900px;">
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 16px;border-right:1px solid rgba(255,255,255,0.08);">
+      <span style="font-family:'Lora',serif;font-size:32px;font-weight:400;color:#fff;line-height:1;">5.0<span style="color:#C4956A;">★</span></span>
+      <span style="font-size:9px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:5px;font-family:'DM Sans',sans-serif;">Google Rating</span>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 16px;border-right:1px solid rgba(255,255,255,0.08);">
+      <span style="font-family:'Lora',serif;font-size:32px;font-weight:400;color:#fff;line-height:1;">112</span>
+      <span style="font-size:9px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:5px;font-family:'DM Sans',sans-serif;">Patient Reviews</span>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 16px;">
+      <span style="font-family:'Lora',serif;font-size:32px;font-weight:400;color:#fff;line-height:1;">42</span>
+      <span style="font-size:9px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:5px;font-family:'DM Sans',sans-serif;">Years in Practice</span>
+    </div>
+  </div>
+</div>
 
 <section class="triad">
   <div class="triad-header">
